@@ -20,6 +20,28 @@ func Equals(b1 []uint32, b2 []uint32) bool {
 	return true
 }
 
+func TestRandom(t *testing.T) {
+	src := New(322, 0)
+	num := 10
+	bucket := make([]bool, num)
+	m := 0
+	for {
+	bb:
+		m++
+		for x := 0; x < num; x++ {
+			i := src.IntN(uint64(num))
+			bucket[i] = true
+		}
+		for x := 0; x < num; x++ {
+			if !bucket[x] {
+				goto bb
+			}
+		}
+		t.Log(bucket, m)
+		break
+	}
+}
+
 func TestMt(t *testing.T) {
 	src := New(322, 0)
 	size := uint64(1000000)
