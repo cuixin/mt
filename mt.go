@@ -63,12 +63,12 @@ func (m *MT19937_64) Int63() uint64 {
 	return x
 }
 
-func (m *MT19937_64) Next() uint32 {
-	return uint32(m.Int63() % 10000)
+func (m *MT19937_64) Next() int32 {
+	return int32(m.Int63() % 10000)
 }
 
-func (m *MT19937_64) IntN(v uint64) uint32 {
-	return uint32(m.Int63() % v)
+func (m *MT19937_64) IntN(v uint64) int32 {
+	return int32(m.Int63() % v)
 }
 
 func (m *MT19937_64) IntRange(min uint64, max uint64) uint64 {
